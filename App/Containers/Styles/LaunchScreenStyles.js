@@ -1,18 +1,34 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Dimensions } from 'react-native'
 import { Metrics, ApplicationStyles } from '../../Themes/'
+const { width, height } = Dimensions.get('window')
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
-  container: {
-    paddingBottom: Metrics.baseMargin
+  wrapper: {
   },
-  logo: {
-    marginTop: Metrics.doubleSection,
-    height: Metrics.images.logo,
-    width: Metrics.images.logo,
-    resizeMode: 'contain'
+  slide: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    backgroundColor: 'rgba(0,0,0,0)'
   },
-  centered: {
-    alignItems: 'center'
-  }
+  image: {
+    width,
+    height,
+    flex: 1
+  },
+  imgTextWrapper: {
+    flex: 1,
+    // flexGrow:1,
+    height: 200,
+    alignItems: 'center',
+    justifyContent: 'center'
+    // backgroundColor: '#ccc'
+  },
+  imageText: {
+    fontSize: 14,
+    color: '#fff',
+    lineHeight: 35,
+    opacity: 0.8
+  },
 })
