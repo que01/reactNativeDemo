@@ -31,4 +31,12 @@ export default StyleSheet.create({
     lineHeight: 35,
     opacity: 0.8
   },
+  button: {
+    backgroundColor: 'darkcyan',
+    color: '#ccc',
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 30,
+    paddingRight: 30
+  }
 })
