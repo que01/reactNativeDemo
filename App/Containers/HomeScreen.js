@@ -3,46 +3,14 @@ import { ScrollView, Text, KeyboardAvoidingView, View, TouchableOpacity, Image }
 import { connect } from 'react-redux'
 import Tabbar from '../Components/TabBar'
 // Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import homeAction from '../Redux/HomeRedux'
 
 // Styles
 import styles from './Styles/HomeScreenStyle'
-const menus = [
-  {
-    "name": '美食1',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-  {
-    "name": '美食2',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-  {
-    "name": '美食3',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-  {
-    "name": '美食4',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-  {
-    "name": '美食5',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-  {
-    "name": '美食6',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-  {
-    "name": '美食7',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-  {
-    "name": '美食8',
-    "icon": 'https://img.la/333/fff/60x60'
-  },
-
-];
 class HomeScreen extends Component {
+  componentDidMount () {
+    this.props.fetchData()
+  }
   render () {
     const { navigate } = this.props.navigation
     return (
@@ -51,7 +19,7 @@ class HomeScreen extends Component {
           <KeyboardAvoidingView behavior='position'>
             <View style={styles.menuItemWrapper}>
               {
-                menus.map(({name, icon},i)=>(
+                this.props.initData.menus.map(({name, icon},i)=>(
                   <TouchableOpacity style={styles.menuItem} key={`icon-${i}`}>
                     <Image source={{uri: icon}} style={styles.menuItemIcon}/>
                     <Text>{name}</Text>
@@ -67,13 +35,15 @@ class HomeScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ({homeInitData}) => {
   return {
+    initData: homeInitData.data
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
+    fetchData: () => dispatch(homeAction.homeRequest())
   }
 }
 

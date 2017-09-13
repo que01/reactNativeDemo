@@ -20,5 +20,9 @@ export default {
       ok: true,
       data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
     }
+  },
+  gethome: (data) => {
+    const initData = require('../Fixtures/home.json')
+    return {...initData}
   }
 }

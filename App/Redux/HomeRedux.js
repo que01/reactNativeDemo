@@ -5,7 +5,7 @@ import Immutable from 'seamless-immutable'
 
 const { Types, Creators } = createActions({
   homeRequest: ['data'],
-  homeSuccess: ['payload'],
+  homeSuccess: ['data'],
   homeFailure: null
 })
 
@@ -15,7 +15,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
-  data: null,
+  data: {menus: []},
   fetching: null,
   payload: null,
   error: null
@@ -29,8 +29,8 @@ export const request = (state, { data }) =>
 
 // successful api lookup
 export const success = (state, action) => {
-  const { payload } = action
-  return state.merge({ fetching: false, error: null, payload })
+  const { data } = action
+  return state.merge({ fetching: false, error: null, data })
 }
 
 // Something went wrong somewhere.

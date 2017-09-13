@@ -19,7 +19,7 @@ export function * getHome (api, action) {
   const response = yield call(api.gethome, data)
 
   // success?
-  if (response.ok) {
+  if (+response.code === 200) {
     // You might need to change the response here - do this with a 'transform',
     // located in ../Transforms/. Otherwise, just pass the data back from the api.
     yield put(HomeActions.homeSuccess(response.data))
